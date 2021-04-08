@@ -54,5 +54,10 @@ public void addReplyTo() throws EmailException {
 	//assertEquals(TEST_EMAILS, "name"); 
 }
 
+@Test (expected= EmailException.class)
+public void getMailSession() throws EmailException {
+	email.getMailSession();
+	
+}
 
 }
