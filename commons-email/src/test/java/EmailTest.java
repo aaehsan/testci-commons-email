@@ -1,7 +1,10 @@
+import static org.junit.Assert.assertEquals;
+
 import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 public class EmailTest {
 	
@@ -23,5 +26,12 @@ email = new EmailConcrete();
 @After
 public void tearDownEmailTest() throws Exception{
 
+}
+
+@Test
+public void testAddBcc() throws Exception{
+	email.addBcc(TEST_EMAILS);
+	
+	assertEquals(3, email.getBccAddresses().size());
 }
 }
