@@ -60,4 +60,11 @@ public void getMailSession() throws EmailException {
 	
 }
 
+@Test 
+public void getSentDate() {
+	email.setSentDate(d);
+	email.getSentDate();
+	assertEquals(d, email.getSentDate());
+}
+
 }
