@@ -1,10 +1,12 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.mail.EmailConstants;
 import org.apache.commons.mail.EmailException;
@@ -97,5 +99,26 @@ public void getHostNameTest() {
 	assertEquals(emailName, email.getHostName());
 }
 
+@Test 
+public void testBuildMimeMessage() throws EmailException {
+	email.setHostName("localhost");
+	email.setSmtpPort(1234);
+	email.setFrom("a@b.com");
+	email.addTo("c@d.com");
+	email.setSubject("test mail");
+	
+	email.setCharset("ISO-8859-1");
+	email.setContent("tes content", "text/plain");
+	email.addBcc("test@abc.com");
+	email.addCc("c@d.com");
+	email.addHeader("test", "abc");
+	email.getMimeMessage();
+	email.getContentType();
+	email.updateContentType("test content");
+	email.buildMimeMessage();
+	MimeMessage message = email.getMimeMessage();
+	assertTrue(message instanceof MimeMessage);
 
+	
+}
 }
