@@ -2,7 +2,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 import java.util.Date;
+import java.util.Properties;
 
+import javax.mail.Session;
+
+import org.apache.commons.mail.EmailConstants;
 import org.apache.commons.mail.EmailException;
 import org.junit.After;
 import org.junit.Before;
@@ -73,5 +77,25 @@ public void getSocketConnectionTimeout() {
 	email.setSocketConnectionTimeout(connectionS);
 	assertSame(connectionS, email.getSocketConnectionTimeout());
 }
+
+@Test
+public void setFrom() throws EmailException{
+	email.setFrom(emailName, null);	
+}
+
+
+@Test
+public void getHostNameTest() {
+	email.setHostName(null);
+	
+	assertEquals(null,email.getHostName());
+	
+	Properties properties = new Properties();
+	Session session = Session.getDefaultInstance(properties, null);
+	properties.put(EmailConstants.MAIL_HOST, emailName);
+	email.setMailSession(session);
+	assertEquals(emailName, email.getHostName());
+}
+
 
 }
