@@ -41,4 +41,11 @@ public void testAddCc() throws Exception{
 	assertEquals(3, email.getCcAddresses().size());
 }
 
+@Test (expected = IllegalArgumentException.class)
+public void addHeader() {
+	email.addHeader(value, null);
+	email.addHeader(null, null);
+}
+
+
 }
