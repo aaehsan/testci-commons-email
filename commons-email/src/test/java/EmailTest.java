@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 import java.util.Date;
 
@@ -65,6 +66,12 @@ public void getSentDate() {
 	email.setSentDate(d);
 	email.getSentDate();
 	assertEquals(d, email.getSentDate());
+}
+
+@Test
+public void getSocketConnectionTimeout() {
+	email.setSocketConnectionTimeout(connectionS);
+	assertSame(connectionS, email.getSocketConnectionTimeout());
 }
 
 }
