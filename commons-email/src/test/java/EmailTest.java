@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 
+import org.apache.commons.mail.EmailException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,6 +46,12 @@ public void testAddCc() throws Exception{
 public void addHeader() {
 	email.addHeader(value, null);
 	email.addHeader(null, null);
+}
+@Test 
+public void addReplyTo() throws EmailException {
+	email.addReplyTo(emailName, "emailName");
+	//email.addReplyTo("abc.com", "0");
+	//assertEquals(TEST_EMAILS, "name"); 
 }
 
 
